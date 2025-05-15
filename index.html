@@ -38,6 +38,7 @@
         <option value="Rare">Rare</option>
         <option value="Very-Rare">Very-Rare</option>
         <option value="Legendary">Legendary</option>
+        <option value="Cursed">Cursed</option>
       </select>
       <label for="sortByEl" class="visually-hidden">Sort items by</label>
       <select id="sortByEl" aria-label="Sort items by">
@@ -93,6 +94,7 @@
               <option value="Rare">Rare</option>
               <option value="Very-Rare">Very-Rare</option>
               <option value="Legendary">Legendary</option>
+              <option value="Cursed">Cursed</option>
             </select>
           </div>
           <div class="form-group half">
@@ -266,7 +268,18 @@
     background-size: 1800% 1800%;
     animation: rainbow 6s ease infinite;
   }
+  .card-rarity.Cursed { 
+    background: linear-gradient(124deg, #9C27B0, #BA68C8);
+    background-size: 400% 400%;
+    animation: purple-pulse 3s ease infinite;
+  }
   
+  @keyframes purple-pulse { 
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+  }
+
   @keyframes rainbow { 
     0% { background-position: 0% 82% }
     50% { background-position: 100% 19% }
@@ -3080,6 +3093,17 @@
     "price": 20000,
     "imageUrl": "https://ik.imagekit.io/owlcan/diaperlistapp/patientsaint.jpg"
   },
+  {
+  "id": 226, 
+  "name": "Diaper of the Hyena's Riddle",
+  "aesthetic": "Durable, soft grey material with a repeating print of a leering hyena clamping an ornate padlock in its jaws. Fused adhesive tapes.",
+  "description": "This cursed diaper binds to its wearer. It grants +2 AC and +1 Wisdom. Once donned, it cannot be removed except by successfully seducing another willing creature (DC 18 Charisma check). Failure results in illusory mocking laughter and disadvantage on Charisma checks/saves for 1 hour. Prevents external sexual stimulation.",
+  "buff": "Grants a +2 bonus to AC and a +1 bonus to Wisdom (max 22). Curse: Irremovable until a DC 18 Charisma (Persuasion/Deception) check for seduction is passed. Failure causes illusory laughter and disadvantage on Charisma checks/saves for 1 hour. Prevents external sexual stimulation. The diaper charges reset at dawn.",
+  "rarity": "Cursed",
+  "charges": 10,
+  "price": 0, 
+  "imageUrl": "https://ik.imagekit.io/owlcan/diaperlistapp/hyenasriddles.jpg"
+},
   ];
 
   // Function to render all cards
@@ -3180,7 +3204,7 @@
         case 'price':
           return b.price - a.price;
         case 'rarity':
-          const rarityOrder = { 'Mundane': 0, 'Common': 1, 'Uncommon': 2, 'Rare': 3, 'Very-Rare': 4,'Legendary': 5 };
+          const rarityOrder = { 'Mundane': 0, 'Common': 1, 'Uncommon': 2, 'Rare': 3, 'Very-Rare': 4,'Legendary': 5, 'Cursed': 6 };
           return rarityOrder[b.rarity] - rarityOrder[a.rarity];
         case 'charges':
           return b.charges - a.charges;
